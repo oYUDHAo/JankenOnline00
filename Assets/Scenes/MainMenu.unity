@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usernameInput: {fileID: 1946158279}
-  feedbackText: {fileID: 1043138349}
+  feedback: {fileID: 1043138349}
 --- !u!4 &1602157277
 Transform:
   m_ObjectHideFlags: 0

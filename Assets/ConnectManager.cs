@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ConnectManager : MonoBehaviourPunCallbacks
 {
    [SerializeField] TMP_InputField usernameInput;
-   [SerializeField] TMP_Text feedbackText;
+   [SerializeField] TMP_Text feedback;
 
 
    public void ClickConnect()
    {
-        feedbackText.text = "";
+        feedback.text = "";
 
         if (usernameInput.text.Length < 3)
         {
-            feedbackText.text = "Username minimum 3 characters";
+            feedback.text = "Username minimum 3 characters";
                 return;
         }
 
+        PhotonNetwork.NickName = usernameInput.text;
+
         PhotonNetwork.ConnectUsingSettings();
-        feedbackText.text = "Connecting...";
+        feedback.text = "Connecting...";
    }
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Master");
-        feedbackText.text = "Connected to Master";
+        feedback.text = "Connected to Master";
+        SceneManager.LoadScene("Loby");
     }
 }
